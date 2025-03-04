@@ -1,25 +1,20 @@
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import view.FarmView;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
-            VBox root = loader.load();
-            Scene scene = new Scene(root, 400, 300);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Jeu de Ferme - JavaFX");
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Créer une instance de FarmView (la vue principale du jeu)
+        FarmView farmView = new FarmView();
+
+        // Démarrer la vue avec la fenêtre principale
+        farmView.start(primaryStage);
     }
 
     public static void main(String[] args) {
+        // Lancer l'application JavaFX
         launch(args);
     }
 }

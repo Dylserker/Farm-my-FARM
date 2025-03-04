@@ -1,38 +1,25 @@
 package model;
 
 public class Animal {
-    private String nom;
-    private int joursSansNourriture;
-    private boolean vivant;
-    private String produit;
+    private String type;
+    private int productAmount;
+    private int price;
 
-    public Animal(String nom, String produit) {
-        this.nom = nom;
-        this.joursSansNourriture = 0;
-        this.vivant = true;
-        this.produit = produit;
+    public Animal(String type, int price) {
+        this.type = type;
+        this.price = price;
+        this.productAmount = 0;
     }
 
-    public void nourrir() {
-        joursSansNourriture = 0;
+    public void produce() {
+        productAmount++;
     }
 
-    public void passerUnJour() {
-        joursSansNourriture++;
-        if (joursSansNourriture > 3) {
-            vivant = false;
-        }
+    public int getPrice() {
+        return price;
     }
 
-    public boolean estVivant() {
-        return vivant;
-    }
-
-    public String getProduit() {
-        return produit;
-    }
-
-    public String getNom() {
-        return nom;
+    public int getProductAmount() {
+        return productAmount;
     }
 }
