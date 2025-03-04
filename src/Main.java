@@ -1,25 +1,16 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.Screen;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/GameBoard.fxml"));
-            GridPane root = loader.load();
-
-            Screen screen = Screen.getPrimary();
-            double screenWidth = screen.getVisualBounds().getWidth();
-            double screenHeight = screen.getVisualBounds().getHeight();
-
-            Scene scene = new Scene(root, screenWidth, screenHeight);
-
-            primaryStage.setTitle("PokeFarm");
-            primaryStage.setScene(scene);
+            Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
+            primaryStage.setTitle("Farm My FARM");
+            primaryStage.setScene(new Scene(root, 800, 600));
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
