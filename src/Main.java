@@ -1,20 +1,32 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import view.FarmView;
+import javafx.stage.Screen;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) {
-        // Créer une instance de FarmView (la vue principale du jeu)
-        FarmView farmView = new FarmView();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/GameBoard.fxml"));
+            GridPane root = loader.load();
 
-        // Démarrer la vue avec la fenêtre principale
-        farmView.start(primaryStage);
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getVisualBounds().getWidth();
+            double screenHeight = screen.getVisualBounds().getHeight();
+
+            Scene scene = new Scene(root, screenWidth, screenHeight);
+
+            primaryStage.setTitle("PokeFarm");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        // Lancer l'application JavaFX
         launch(args);
     }
 }
