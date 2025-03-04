@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+    <Label text="Gestion de la Ferme" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label fx:id="argentLabel" text="Argent: 100 pièces" />
+    <Button fx:id="planterButton" text="Planter Blé" onAction="#planterCulture" />
+    <Button fx:id="avancerJourButton" text="Avancer d'un jour" onAction="#avancerJour" />
+    <Button fx:id="recolterButton" text="Récolter" onAction="#recolter" />
+    <VBox fx:id="cultureList" spacing="5" />
+</VBox>
