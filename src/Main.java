@@ -10,7 +10,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
             VBox root = loader.load();
-            Scene scene = new Scene(root, 400, 300);
+            Scene scene = new Scene(root, 1200, 800);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Jeu de Ferme - JavaFX");
             primaryStage.show();
