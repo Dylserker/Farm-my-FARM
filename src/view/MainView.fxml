@@ -13,11 +13,16 @@
     <Button fx:id="acheterVacheButton" text="Acheter Vache (50 pièces)" onAction="#acheterVache" />
     <Button fx:id="nourrirAnimauxButton" text="Nourrir Animaux" onAction="#nourrirAnimaux" />
     <Button fx:id="avancerJourButton" text="Avancer d'un jour" onAction="#avancerJour" />
-    <Button fx:id="recolterButton" text="Récolter" onAction="#recolter" />
+    <Button fx:id="recolterButton" text="Récolter" />
 
     <Label text="🌱 Cultures :" />
     <VBox fx:id="cultureList" spacing="5" />
 
     <Label text="🐄 Animaux :" />
     <VBox fx:id="animalList" spacing="5" />
+
+    <Label fx:id="meteoLabel" text="Météo: Ensoleillé" />
+
+    <Button text="Sauvegarder" onAction="#sauvegarderFerme" />
+    <Button text="Charger" onAction="#chargerFerme" />
 </VBox>

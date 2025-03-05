@@ -1,29 +1,25 @@
 package model;
 
-public class Culture {
-    private String nom;
-    private int tempsDeCroissance;
-    private int joursRestants;
-    private boolean mature;
+import java.io.Serializable;
 
-    public Culture(String nom, int tempsDeCroissance) {
+public class Culture implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String nom;
+    private int joursRestants;
+
+    public Culture(String nom, int joursRestants) {
         this.nom = nom;
-        this.tempsDeCroissance = tempsDeCroissance;
-        this.joursRestants = tempsDeCroissance;
-        this.mature = false;
+        this.joursRestants = joursRestants;
     }
 
     public void passerUnJour() {
         if (joursRestants > 0) {
             joursRestants--;
-            if (joursRestants == 0) {
-                mature = true;
-            }
         }
     }
 
     public boolean estMature() {
-        return mature;
+        return joursRestants == 0;
     }
 
     public String getNom() {

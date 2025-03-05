@@ -7,6 +7,8 @@ import javafx.scene.layout.VBox;
 import model.Culture;
 import model.Ferme;
 
+import java.io.*;
+
 public class GameController {
     private Ferme ferme;
 
@@ -15,6 +17,9 @@ public class GameController {
 
     @FXML
     private Label argentLabel;
+
+    @FXML
+    private Label meteoLabel;
 
     @FXML
     private Button planterButton;
@@ -62,6 +67,27 @@ public class GameController {
         updateUI();
     }
 
+    @FXML
+    public void sauvegarderFerme() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ferme.sav"))) {
+            oos.writeObject(ferme);
+            System.out.println("Sauvegarde réussie.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void chargerFerme() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ferme.sav"))) {
+            ferme = (Ferme) ois.readObject();
+            updateUI();
+            System.out.println("Chargement réussi.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void updateUI() {
         cultureList.getChildren().clear();
         for (Culture culture : ferme.getCultures()) {
@@ -69,6 +95,6 @@ public class GameController {
             cultureList.getChildren().add(label);
         }
         argentLabel.setText("Argent: " + ferme.getArgent() + " pièces");
+        meteoLabel.setText("Météo: " + ferme.getMeteo().getConditionActuelle());
     }
 }
-
