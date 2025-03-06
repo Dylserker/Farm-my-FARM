@@ -1,4 +1,3 @@
-// src/model/Ferme.java
 package model;
 
 import java.io.Serializable;
@@ -50,6 +49,18 @@ public class Ferme implements Serializable {
             System.out.println("Les animaux ont été nourris.");
         } else {
             System.out.println("Pas assez d'argent pour nourrir les animaux.");
+        }
+    }
+
+    public void vendreCulture(Culture culture) {
+        if (cultures.remove(culture)) {
+            argent += 30; // Assume each culture sells for 30
+        }
+    }
+
+    public void vendreVache(Vache vache) {
+        if (vaches.remove(vache)) {
+            argent += 100; // Assume each vache sells for 100
         }
     }
 

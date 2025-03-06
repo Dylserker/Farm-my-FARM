@@ -1,4 +1,3 @@
-// src/controller/GameController.java
 package controller;
 
 import javafx.fxml.FXML;
@@ -70,6 +69,24 @@ public class GameController {
     public void recolter() {
         ferme.recolter();
         updateUI();
+    }
+
+    @FXML
+    public void vendreCulture() {
+        if (!ferme.getCultures().isEmpty()) {
+            Culture culture = ferme.getCultures().get(0); // Sell the first culture
+            ferme.vendreCulture(culture);
+            updateUI();
+        }
+    }
+
+    @FXML
+    public void vendreVache() {
+        if (!ferme.getVaches().isEmpty()) {
+            Vache vache = ferme.getVaches().get(0); // Sell the first vache
+            ferme.vendreVache(vache);
+            updateUI();
+        }
     }
 
     @FXML
