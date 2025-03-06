@@ -18,10 +18,10 @@
     <Button fx:id="vendreVacheButton" text="Vendre Vache" onAction="#vendreVache" />
 
     <Label text="🌱 Cultures :" />
-    <VBox fx:id="cultureList" spacing="5" />
+    <VBox fx:id="cultureList" spacing="5" alignment="CENTER" />
 
     <Label text="🐄 Animaux :" />
-    <VBox fx:id="animalList" spacing="5" />
+    <VBox fx:id="animalList" spacing="5" alignment="CENTER" />
 
     <Label fx:id="meteoLabel" text="Météo: Ensoleillé" />
 
