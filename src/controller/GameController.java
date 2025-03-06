@@ -7,6 +7,8 @@ import javafx.scene.layout.VBox;
 import model.Culture;
 import model.Ferme;
 import model.Vache;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.*;
 
@@ -74,7 +76,7 @@ public class GameController {
     @FXML
     public void vendreCulture() {
         if (!ferme.getCultures().isEmpty()) {
-            Culture culture = ferme.getCultures().get(0); // Sell the first culture
+            Culture culture = ferme.getCultures().get(0);
             ferme.vendreCulture(culture);
             updateUI();
         }
@@ -83,7 +85,7 @@ public class GameController {
     @FXML
     public void vendreVache() {
         if (!ferme.getVaches().isEmpty()) {
-            Vache vache = ferme.getVaches().get(0); // Sell the first vache
+            Vache vache = ferme.getVaches().get(0);
             ferme.vendreVache(vache);
             updateUI();
         }
@@ -119,8 +121,8 @@ public class GameController {
 
         animalList.getChildren().clear();
         for (Vache vache : ferme.getVaches()) {
-            Label label = new Label(vache.getNom());
-            animalList.getChildren().add(label);
+            ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/Assets/Images/miltank.png")));
+            animalList.getChildren().add(imageView);
         }
 
         argentLabel.setText("Argent: " + ferme.getArgent() + " pièces");
