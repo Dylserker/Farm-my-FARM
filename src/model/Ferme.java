@@ -1,3 +1,4 @@
+// src/model/Ferme.java
 package model;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ public class Ferme implements Serializable {
     public Ferme() {
         this.cultures = new ArrayList<>();
         this.vaches = new ArrayList<>();
-        this.argent = 100;
+        this.argent = 500;
         this.meteo = new Meteo();
     }
 

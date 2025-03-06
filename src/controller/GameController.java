@@ -1,3 +1,4 @@
+// src/controller/GameController.java
 package controller;
 
 import javafx.fxml.FXML;
@@ -6,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import model.Culture;
 import model.Ferme;
+import model.Vache;
 
 import java.io.*;
 
@@ -29,6 +31,9 @@ public class GameController {
 
     @FXML
     private Button recolterButton;
+
+    @FXML
+    private VBox animalList;
 
     @FXML
     public void initialize() {
@@ -94,6 +99,13 @@ public class GameController {
             Label label = new Label(culture.getNom() + " - Jours restants: " + (culture.estMature() ? "Prêt à récolter" : culture.getNom()));
             cultureList.getChildren().add(label);
         }
+
+        animalList.getChildren().clear();
+        for (Vache vache : ferme.getVaches()) {
+            Label label = new Label(vache.getNom());
+            animalList.getChildren().add(label);
+        }
+
         argentLabel.setText("Argent: " + ferme.getArgent() + " pièces");
         meteoLabel.setText("Météo: " + ferme.getMeteo().getConditionActuelle());
     }
