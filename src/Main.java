@@ -10,7 +10,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
             primaryStage.setTitle("Farm My FARM");
-            primaryStage.setScene(new Scene(root, 800, 600));
+            primaryStage.setScene(new Scene(root, 1000, 900));
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

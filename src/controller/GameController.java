@@ -115,14 +115,34 @@ public class GameController {
     private void updateUI() {
         cultureList.getChildren().clear();
         for (Culture culture : ferme.getCultures()) {
-            Label label = new Label(culture.getNom() + " - Jours restants: " + (culture.estMature() ? "Prêt à récolter" : culture.getNom()));
-            cultureList.getChildren().add(label);
+            ImageView imageView;
+            InputStream imageStream = null;
+            if (culture.estMature()) {
+                imageStream = getClass().getResourceAsStream("/Assets/Images/Baie_Oran4.jpg");
+            } else if (culture.getJoursRestants() == 2) {
+                imageStream = getClass().getResourceAsStream("/Assets/Images/Baie_Oran2.jpg");
+            } else if (culture.getJoursRestants() == 1) {
+                imageStream = getClass().getResourceAsStream("/Assets/Images/Baie_Oran3.jpg");
+            } else {
+                imageStream = getClass().getResourceAsStream("/Assets/Images/Baie_Oran1.jpg");
+            }
+            if (imageStream != null) {
+                imageView = new ImageView(new Image(imageStream));
+                cultureList.getChildren().add(imageView);
+            } else {
+                System.err.println("Image not found for culture: " + culture.getNom());
+            }
         }
 
         animalList.getChildren().clear();
         for (Vache vache : ferme.getVaches()) {
-            ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/Assets/Images/miltank.png")));
-            animalList.getChildren().add(imageView);
+            InputStream animalImageStream = getClass().getResourceAsStream("/Assets/Images/miltank.png");
+            if (animalImageStream != null) {
+                ImageView imageView = new ImageView(new Image(animalImageStream));
+                animalList.getChildren().add(imageView);
+            } else {
+                System.err.println("Image not found for vache.");
+            }
         }
 
         argentLabel.setText("Argent: " + ferme.getArgent() + " pièces");

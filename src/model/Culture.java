@@ -25,4 +25,8 @@ public class Culture implements Serializable {
     public String getNom() {
         return nom;
     }
+
+    public int getJoursRestants() {
+        return joursRestants;
+    }
 }
