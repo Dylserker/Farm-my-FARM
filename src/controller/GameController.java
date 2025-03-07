@@ -164,16 +164,24 @@ public class GameController {
 
         animalList.getChildren().clear();
         int animalColumn = 0;
+        double imageSize = 50.0;
+
         for (Vache vache : ferme.getVaches()) {
             InputStream animalImageStream = getClass().getResourceAsStream("/Assets/Images/miltank.png");
             if (animalImageStream != null) {
                 ImageView cowImageView = new ImageView(new Image(animalImageStream));
+                cowImageView.setFitWidth(imageSize);
+                cowImageView.setFitHeight(imageSize);
+                cowImageView.setPreserveRatio(true);
                 animalList.add(cowImageView, animalColumn, 0);
 
                 if (vache.peutVendreLait()) {
                     InputStream milkImageStream = getClass().getResourceAsStream("/Assets/Images/Lait_Meumeu.png");
                     if (milkImageStream != null) {
                         ImageView milkImageView = new ImageView(new Image(milkImageStream));
+                        milkImageView.setFitWidth(imageSize);
+                        milkImageView.setFitHeight(imageSize);
+                        milkImageView.setPreserveRatio(true);
                         animalList.add(milkImageView, animalColumn, 1);
                     } else {
                         System.err.println("Image not found for milk.");
