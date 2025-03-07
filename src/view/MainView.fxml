@@ -18,9 +18,10 @@
         <Button fx:id="acheterVacheButton" text="Acheter Vache (50 pièces)" onAction="#acheterVache" />
         <Button fx:id="nourrirAnimauxButton" text="Nourrir Animaux" onAction="#nourrirAnimaux" />
         <Button fx:id="avancerJourButton" text="Avancer d'un jour" onAction="#avancerJour" />
-        <Button fx:id="recolterButton" text="Récolter" onAction="#recolter" />
         <Button fx:id="vendreCultureButton" text="Vendre Culture" onAction="#vendreCulture" />
         <Button fx:id="vendreVacheButton" text="Vendre Vache" onAction="#vendreVache" />
+        <Button fx:id="gestionButton" text="Finances et Gestion" onAction="#afficherGestion" />
+        <Button fx:id="vendreLaitButton" text="Vendre Lait" onAction="#vendreLait" />
     </FlowPane>
 
     <VBox alignment="CENTER" spacing="10">

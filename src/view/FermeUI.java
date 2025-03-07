@@ -15,15 +15,6 @@ public class FermeUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
 
-        btnRecolter = new JButton("Récolter");
-        btnRecolter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ferme.recolter();
-                System.out.println("Récolte effectuée. Argent: " + ferme.getArgent());
-            }
-        });
-
         frame.getContentPane().add(btnRecolter);
         frame.setVisible(true);
     }

@@ -22,16 +22,29 @@ public class Ferme implements Serializable {
         cultures.add(culture);
     }
 
+    public void produireLait() {
+        for (Vache vache : vaches) {
+            vache.produireLait();
+        }
+    }
+
+    public void vendreLait() {
+        int gainTotal = 0;
+        for (Vache vache : vaches) {
+            if (vache.peutVendreLait()) {
+                gainTotal += 15;
+                vache.resetProduction();
+            }
+        }
+        this.argent += gainTotal;
+    }
+
     public void passerUnJour() {
         for (Culture culture : cultures) {
             culture.passerUnJour();
         }
+        produireLait();
         meteo.changerCondition();
-    }
-
-    public void recolter() {
-        cultures.removeIf(Culture::estMature);
-        argent += 20;
     }
 
     public void acheterVache() {
@@ -63,6 +76,8 @@ public class Ferme implements Serializable {
             argent += 100;
         }
     }
+
+
 
     public int getArgent() {
         return argent;

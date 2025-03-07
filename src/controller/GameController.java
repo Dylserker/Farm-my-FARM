@@ -9,6 +9,11 @@ import model.Ferme;
 import model.Vache;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.scene.layout.VBox;
 
 import java.io.*;
 
@@ -29,9 +34,6 @@ public class GameController {
 
     @FXML
     private Button avancerJourButton;
-
-    @FXML
-    private Button recolterButton;
 
     @FXML
     private GridPane animalList;
@@ -68,18 +70,21 @@ public class GameController {
     }
 
     @FXML
-    public void recolter() {
-        ferme.recolter();
+    public void vendreLait() {
+        ferme.vendreLait();
         updateUI();
     }
 
     @FXML
     public void vendreCulture() {
-        if (!ferme.getCultures().isEmpty()) {
-            Culture culture = ferme.getCultures().get(0);
-            ferme.vendreCulture(culture);
-            updateUI();
+        for (Culture culture : ferme.getCultures()) {
+            if (culture.estMature()) {
+                ferme.vendreCulture(culture);
+                updateUI();
+                return;
+            }
         }
+        System.out.println("Aucune culture mature à vendre.");
     }
 
     @FXML
@@ -110,6 +115,28 @@ public class GameController {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void afficherGestion() {
+        Stage gestionStage = new Stage();
+        VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(10));
+
+        Label titreLabel = new Label("Finances et Gestion");
+        titreLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+        Label revenusLabel = new Label("Revenus totaux: " + ferme.getArgent() + " pièces");
+        Label nbVachesLabel = new Label("Nombre de vaches: " + ferme.getVaches().size());
+        Label nbCulturesLabel = new Label("Nombre de cultures: " + ferme.getCultures().size());
+
+        layout.getChildren().addAll(titreLabel, revenusLabel, nbVachesLabel, nbCulturesLabel);
+
+        Scene scene = new Scene(layout, 300, 200);
+        gestionStage.setTitle("Finances et Gestion");
+        gestionStage.setScene(scene);
+        gestionStage.show();
     }
 
     private void updateUI() {
