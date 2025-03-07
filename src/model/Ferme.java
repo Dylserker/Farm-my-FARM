@@ -54,13 +54,13 @@ public class Ferme implements Serializable {
 
     public void vendreCulture(Culture culture) {
         if (cultures.remove(culture)) {
-            argent += 30; // Assume each culture sells for 30
+            argent += 30;
         }
     }
 
     public void vendreVache(Vache vache) {
         if (vaches.remove(vache)) {
-            argent += 100; // Assume each vache sells for 100
+            argent += 100;
         }
     }
 

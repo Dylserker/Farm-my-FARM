@@ -3,7 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import model.Culture;
 import model.Ferme;
 import model.Vache;
@@ -16,7 +16,7 @@ public class GameController {
     private Ferme ferme;
 
     @FXML
-    private VBox cultureList;
+    private GridPane cultureList;
 
     @FXML
     private Label argentLabel;
@@ -34,7 +34,7 @@ public class GameController {
     private Button recolterButton;
 
     @FXML
-    private VBox animalList;
+    private GridPane animalList;
 
     @FXML
     public void initialize() {
@@ -114,6 +114,7 @@ public class GameController {
 
     private void updateUI() {
         cultureList.getChildren().clear();
+        int cultureRow = 0;
         for (Culture culture : ferme.getCultures()) {
             ImageView imageView;
             InputStream imageStream = null;
@@ -128,18 +129,19 @@ public class GameController {
             }
             if (imageStream != null) {
                 imageView = new ImageView(new Image(imageStream));
-                cultureList.getChildren().add(imageView);
+                cultureList.add(imageView, 0, cultureRow++);
             } else {
                 System.err.println("Image not found for culture: " + culture.getNom());
             }
         }
 
         animalList.getChildren().clear();
+        int animalRow = 0;
         for (Vache vache : ferme.getVaches()) {
             InputStream animalImageStream = getClass().getResourceAsStream("/Assets/Images/miltank.png");
             if (animalImageStream != null) {
                 ImageView imageView = new ImageView(new Image(animalImageStream));
-                animalList.getChildren().add(imageView);
+                animalList.add(imageView, 0, animalRow++);
             } else {
                 System.err.println("Image not found for vache.");
             }
