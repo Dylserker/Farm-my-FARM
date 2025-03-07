@@ -114,7 +114,7 @@ public class GameController {
 
     private void updateUI() {
         cultureList.getChildren().clear();
-        int cultureRow = 0;
+        int cultureColumn = 0;
         for (Culture culture : ferme.getCultures()) {
             ImageView imageView;
             InputStream imageStream = null;
@@ -129,19 +129,19 @@ public class GameController {
             }
             if (imageStream != null) {
                 imageView = new ImageView(new Image(imageStream));
-                cultureList.add(imageView, 0, cultureRow++);
+                cultureList.add(imageView, cultureColumn++, 0);
             } else {
                 System.err.println("Image not found for culture: " + culture.getNom());
             }
         }
 
         animalList.getChildren().clear();
-        int animalRow = 0;
+        int animalColumn = 0;
         for (Vache vache : ferme.getVaches()) {
             InputStream animalImageStream = getClass().getResourceAsStream("/Assets/Images/miltank.png");
             if (animalImageStream != null) {
                 ImageView imageView = new ImageView(new Image(animalImageStream));
-                animalList.add(imageView, 0, animalRow++);
+                animalList.add(imageView, animalColumn++, 0);
             } else {
                 System.err.println("Image not found for vache.");
             }
